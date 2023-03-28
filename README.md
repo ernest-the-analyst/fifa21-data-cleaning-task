@@ -11,14 +11,14 @@ My prefered tool for this Data cleaning challenge based on proficiency is Power 
 
 ## Data Cleaning Process
 
-image
-To ensure data quality , the following approach was used
+![image](https://user-images.githubusercontent.com/97708113/228185857-9b664ac7-436b-4060-9713-21a7c206703f.png)
 
-After loading the data , whitespaces were removed by unticking the button from the viewtab
+To ensure data quality , the following approach was used after loading the data , whitespaces were removed by unticking the button from the viewtab
 
-Whitespaces
-Before	After
-image	image
+## Whitespaces
+![image](https://user-images.githubusercontent.com/97708113/228186251-ba1d51e7-178d-4ea0-acf2-7fcfd1324200.png)
+
+
 1. Data Auditing To ensure data quality, during the auditing stage of understanding the data and identifying any inconsistencies, missing values, or errors that need to be addressed, the following columns were marked for cleaning ; Name, Longname , Age , OVA , POT , Club , Contract , Positions , Height , Weight , Best position , Joined , Loan End date , Value, wage , release clause , W/F , SM , IR , and Hits.
 
 2. Data enrichment This step involves adding additional information to the data,to enhance its value and usefulness. The dataset was collected 2 years ago in 2021 thus the data was modified to reflect their current age. This was made as an additional column to give the Analyst/Visualizer a choice to use or drop either one.
