@@ -1,21 +1,17 @@
 # fifa21-data-cleaning-
 ![image](https://user-images.githubusercontent.com/128243939/228201137-ab395cbf-3dbe-4623-8768-60dbaf83eb7f.png)
 
-A dirty data makes a dirty analysis , so take a walk with me
+
 
 # Introduction
 
-This is a rundown of the cleaning process for FIFA '21 dataset. This data set was provided as part of a challenge #Datacleaningchallenge launched on twitter by data ethusiasts to test the prowess of newbies , intermediate and pro Data analyst alike for a large messy dataset.
-
-The data set contains 18,979 rows and 77 columns of football players statistics and demography in 2021 The dataset is publicly available on [kaggle](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring) which contains data scrapped from [sofifa](www.sofifa.com). The datafile also includes a Data dictionary as well as a column named player url which contains a link to the player profile on sofifa to give the analyst furher insight and full details of the player in view in case of missing information.
-
-My prefered tool for this Data cleaning challenge based on proficiency is Power Query as available on Power BI.
+This outlines how to clean the FIFA '21 dataset provided for a #Datacleaningchallenge on Twitter. The dataset has 18,979 rows and 77 columns of football player demographics and statistics from 2021. It's publicly available on [kaggle](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring) and includes a Data dictionary and a "player url" column linking to player profiles on Sofifa for further details. I recommend using Power Query in Power BI for this challenge based on proficiency.
 
 # Data Cleaning Process
 
 ![image](https://user-images.githubusercontent.com/128243939/228203373-6939b5b0-e8e5-4a8e-8d74-8438c8e4cafc.png)
 
-To ensure data quality , the following approach was used after loading the data , whitespaces were removed by unticking the button from the viewtab
+After loading the data, the approach to ensuring data quality involved removing whitespaces by deselecting a button from the view tab.
 
 <h1 align="center">Whitespaces</h1>
 
@@ -24,9 +20,10 @@ To ensure data quality , the following approach was used after loading the data 
 ![image](https://user-images.githubusercontent.com/99989624/224610838-f6b78c4b-b204-42d9-b158-f7aeacb6cda8.png) | ![image](https://user-images.githubusercontent.com/99989624/224610689-763b528d-9eed-431a-8b7d-2d5a54abaa32.png)
 
 
-**1. Data Auditing** : To ensure data quality, during the auditing stage of understanding the data and identifying any inconsistencies, missing values, or errors that need to be addressed, the following columns were marked for cleaning ; Name, Longname , Age , OVA , POT , Club , Contract , Positions , Height , Weight , Best position , Joined , Loan End date , Value, wage , release clause , W/F , SM , IR , and Hits.
+**1. Data Auditing** : To ensure data quality, certain columns were flagged for cleaning during the auditing stage, including Name, Longname, Age, OVA, POT, Club, Contract, Positions, Height, Weight, Best position, Joined, Loan End date, Value, wage, release clause, W/F, SM, IR, and Hits.
 
-**2. Data enrichment** : This step involves adding additional information to the data,to enhance its value and usefulness. The dataset was collected 2 years ago in 2021 thus the data was modified to reflect their current age. This was made as an additional column to give the Analyst/Visualizer a choice to use or drop either one.
+
+**2. Data enrichment** :In this step, extra information is added to the dataset to increase its value and usefulness. Since the data was collected in 2021, but is now two years old, an additional column was created to adjust the players' ages to their current values. The analyst or visualizer can choose to either use or drop the original age column.
 
 <h1 align="center">Age </h1>
 
@@ -38,18 +35,17 @@ The age column + 2 gives us their age in 2023
 
 **3. Data Cleaning and Transformation**
 
-The previously identified columns were worked on , in an orderly manner
+he columns that were marked earlier were addressed in a systematic manner.
 
 <h1 align="center">Names </h1>
 
-The Name and Longname column were Standardised by splitting delimiters and replacing empty rows 
-to generate a first name and last name column. Hyphenated or double last names like De Bruyne , Ter stegan , Van Dijk were also kept in the right manner
+To standardize the Name and Longname columns, the data was split using delimiters and empty rows were replaced to create separate first name and last name columns. Special cases like hyphenated or double last names such as De Bruyne, Ter Stegen, and Van Dijk etc were handled appropriately.
+
 | Before | After |
 |--------|-------|
 ![image](https://user-images.githubusercontent.com/99989624/224680924-00835e64-6273-4c6e-aab9-a472fe3cea3b.png)|![image](https://user-images.githubusercontent.com/99989624/224681183-81a31f33-425e-4105-a848-ebf7d3134ecc.png)
 
-However to sort Diacritic names, like spanish names with accent  , The player url was used to extract those names to get a cleaner version. 
-Filter to see places with Diacritics for the first letter of the alphabet and replace with clean version. If this is not done, during visualization, sorting the names in alphabetical order, ascending or descending will result in those names appearing last after Z.
+For diacritic names such as Spanish names with accents, the player URL was used to extract the names and obtain a cleaner version. To identify places with diacritics in the first letter of the alphabet, a filter was applied, and these were replaced with the clean version. Without this step, sorting the names in alphabetical order during visualization would result in these names appearing last after Z.
 
 | Before | After |
 |--------|-------|
@@ -57,14 +53,13 @@ Filter to see places with Diacritics for the first letter of the alphabet and re
 
 
 
-finally Names like C. Ronaldo , A. Benjamin , G. Paiva were standardized to reflect the full first name
+To achieve standardization, names such as C. Ronaldo, A. Benjamin, and G. Paiva were modified to display the full first name
 
 <div align="center">
     <h2>Percentages</h2>
 </div>
 
-As advised by the Data Dictionary , the columns OVA and POT were reformatted to reflect percentages.
-Column from example was used to add % to the end of the row figures ,then the data type was changed to percentage
+Following the guidance of the Data Dictionary, the OVA and POT columns were reformatted to display percentages. To achieve this, the "Column from example" was utilized to add a "%" symbol to the end of the row figures, and the data type was changed to percentage.
 
 | Before | After |
 |--------|-------|
@@ -73,7 +68,8 @@ Column from example was used to add % to the end of the row figures ,then the da
 <div align="center">
     <h2>Clubs</h2>
 </div>
-Some club names started with 1. examples 1.fc koln , 1. fc union Berlin these were normalised . Also some other club names contained diacritic first letters and as previously explained, this makes alphabetical sorting to flop during visualiization
+
+Certain club names had "1." at the beginning, such as 1.FC Koln and 1.FC Union Berlin, and these were standardized. Additionally, certain club names had diacritic first letters, which, as previously mentioned, could cause alphabetical sorting to fail during visualization.
 
 | Before | After |
 |--------|-------|
@@ -84,25 +80,22 @@ Some club names started with 1. examples 1.fc koln , 1. fc union Berlin these we
     <h2>Contract</h2>
 </div>
 
-This column contained inconsistent data type and format, hence this was reguarized using a combination of 3 columns , namely; Contracts , Joined , and Loan end date
-The filter view reveals players whose contract column specify they are on loan tallies with the year on the Loan end date column.
-while players whose contract indicate free transfer, tally with those clubless players with no wage or value or release clause . this were replaced with null as there is no specified loan end date since they're not on contract and have no recorded wages. These players should therefore be dropped during visualization.
+The column in question had inconsistent data type and format, and to standardize it, a combination of three columns was used: Contracts, Joined, and Loan End Date. By using the filter view, players whose contract column indicated that they were on loan were cross-checked with the year on the Loan End Date column. Likewise, players whose contract indicated free transfer were matched with clubless players who had no wage, value, or release clause, and these were replaced with null since there was no specified loan end date, and they were not on contract. These players should be dropped during visualization.
 
-At the end of the cleaning, splitting and merging of columns we arrived at two columns : contract start and contract end which displays only the year info as lack of more data prevented further date drill down
+After completing the cleaning, splitting, and merging of columns, we ended up with two columns: Contract Start and Contract End, which only display the year information due to a lack of more detailed data.
 
 | Before | After |
 |--------|-------|
 ![image](https://user-images.githubusercontent.com/99989624/224838470-25cd2741-d7bf-479b-8ff7-14d2917f498c.png)|![image](https://user-images.githubusercontent.com/99989624/224838770-df41bf1a-5391-4bdd-8a17-99c4a7da1cb5.png)
 
-Notice the data type of the contract start and contract end data type is ABC text because formating it as a date column will lead to incorrect months and day values. As the first day of the first month is automatically assigned for all rows. Thus During visualization, when formatted as date , only the year drill down should be used. 
-
+The Contract Start and Contract End columns have a data type of ABC text, as formatting them as date columns would result in incorrect months and days being assigned to all rows (i.e., the first day of the first month would be automatically assigned). Therefore, during visualization, if these columns are formatted as dates, only the year should be used for drill down purposes.
 
 <div align="center">
     <h2>Positions</h2>
 </div>
  
  **Split ? Or ignore:** 
- This column contains the position the player has ever played and some had 2 or more positions assigned to them using comma seperated values. Initial thought was to split the column by delimiter to reflect all positions however since this will lead to creating too many irrelevant data occupying memory space,a decision was reached to drop the column for the best position column as best position column contains complete information suitable for analysis
+ The Position column contains multiple positions that some players have played in, and separating them into different columns would create too much irrelevant data, taking up unnecessary memory space. Instead, the Best position column contains complete information suitable for analysis, so the decision was made to drop the Position column.
 
 | Before | After |
 |--------|-------|
@@ -113,7 +106,7 @@ Notice the data type of the contract start and contract end data type is ABC tex
     <h2>Height</h2>
 </div>
 
-The majority of values in this column displays height in centimeter. while a few others uses feet and inches for example 6'2" . Initial thought was just to split by the delimiter ' " and multiply by 30.48 which is the standard conversion of feet to cm . However a quick google search reveals this formula only accounts for feet and not inches hence to resolve this after splitting, the feet column was multplied by 30.48 and the inches column by 2.54. then both columns were merged using addition and rounded up to the nearest whole number. then the cm text value was dropped from the other rows to successfully change the data type to numeric
+The height column contains values in centimeters and also in feet and inches such as 6'2". Initially, there was a plan to convert all values to centimeters by multiplying the feet value by 30.48. However, it was discovered that this formula would not account for the inches value. To address this, the feet column was multiplied by 30.48 and the inches column by 2.54. Then, the two columns were added and rounded up to the nearest whole number. Finally, the "cm" text value was dropped, resulting in a successful conversion of the data type to numeric.
 
 | Before | After |
 |--------|-------|
@@ -123,8 +116,7 @@ The majority of values in this column displays height in centimeter. while a few
 <div align="center">
     <h2>Weight</h2>
 </div>
-About 60% of the data values in this column contains weight in lbs (pounds) and the other 40% in Kg . After splitting the column using Digits to non-digits function,  A decision was made to unify all data values as lbs 
-and the standard conversion rate of 2.205 was used to multiply the weight in Kg value to give the equivalent in lbs and rounded up.
+The weight column had around 60% of data values in pounds and 40% in kilograms. To unify the data, the column was split using the Digits to non-digits function. It was decided to convert all values to pounds. For the values in kilograms, the standard conversion rate of 2.205 was used to multiply the weight, and the result was rounded up to the nearest whole number.
 
 | Before | After |
 |--------|-------|
@@ -134,14 +126,8 @@ and the standard conversion rate of 2.205 was used to multiply the weight in Kg 
 <div align="center">
     <h2>Value , Wage and release clause</h2>
 </div>
-These three columns contains euro values in shortenend format where 1,500 euros was written as 1.5k and one million ,five hundred euros as 1.5m.
-The goal is to standardise the columns and convert to US dollars
-Hence the approach used was to dropped the euro symbol from all rows using find and replace, then split columns by m and k 
 
-first step was to create a New custom column which If column 1 contains m multiplies the figure by 1,000,000 then if column 1 contains k multiply by 1000 else return the figure on the original column , this else function handles the values , wages or release clause in hundreds having no K or M attached (some players earn as low as 500 euro wage ).
-
-this approach gives the full numeric form of the value , wage or release clause but wait! we are not done yet .
-To convert this full numeric digits to USD , the average euro to USD exchange rate of 1.183 was used as this was the average exchange rate as at 2021 which our data is based on.
+Euro values in three columns are shortened, with 1.5k and 1.5m representing 1,500 euros and 1.5 million euros, respectively. The objective is to standardize the columns and convert them to US dollars. To achieve this, the euro symbol was removed from all rows, and the columns were split by "k" and "m." A new custom column was created, which multiplies the figure by 1,000,000 if column 1 contains "m," multiplies by 1000 if column 1 contains "k," else returns the figure on the original column. This approach gives the full numeric form of the value, wage, or release clause, which was then converted to USD using the average euro to USD exchange rate of 1.183, the average exchange rate as of 2021.
 
 | Before | After |
 |--------|-------|
@@ -150,7 +136,7 @@ To convert this full numeric digits to USD , the average euro to USD exchange ra
 <div align="center">
     <h2>W/F , SM , IR</h2>
 </div>
-These three columns contains player ratings in different aspect with a ranking of 1-5 . However a star symbol was encoded to each row and this was removed using the replace function and the data type was changed to numeric.
+The columns contain player ratings with values ranging from 1-5, but each row had a star symbol encoded which was removed using the replace function. The data type was then changed to numeric.
 
 | Before | After |
 |--------|-------|
@@ -159,7 +145,8 @@ These three columns contains player ratings in different aspect with a ranking o
 <div align="center">
     <h2>Hits</h2>
 </div>
-The filter pane reveals some figures in this column were coded in the shortened version, such as 1500 written as 1.5k. These were regularized using a similar approach as previously used and explained for the values and wages column.
+
+The column contained figures in a shortened format, such as 1.5k for 1500. To standardize the data, the same approach used for the values and wages column was applied.
 
 | Before | After |
 |--------|-------|
@@ -169,10 +156,10 @@ The filter pane reveals some figures in this column were coded in the shortened 
 <div align="center">
     <h2>CONCLUSION</h2>
 </div>
-At the end of the day, Data validation was done to verify that the data is accurate, complete, and consistent. Conclusively after what posed to be a Herculean task at first glance, i'm glad i rose up to the occassion to take the bull by the horn by participating in this #DatacleaningChallenge. This has served as a great learning curve for an Intermediate level analyst like me.
 
-Honing my analytical skills is a never ending journey hence i'm open to suggestions , recommendations and improvement .
-I'm also willing to guide other participants in this project.
+After the challenging task, data validation was performed to ensure accuracy, completeness, and consistency. Participating in this #DatacleaningChallenge was a great learning experience for me as an intermediate analyst.
+
+I am constantly seeking to improve my analytical skills and welcome any suggestions or recommendations. Additionally, I am happy to assist and guide other participants in this project.
 
 
 You can reach out to me on Twitter | [@Moonligh17BC](https://twitter.com/Moonlight17BC) | email: [digitaladspaces@gmail.com] | [ernestizu@gmail.com]
