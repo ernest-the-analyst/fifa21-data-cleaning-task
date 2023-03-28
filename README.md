@@ -11,7 +11,10 @@ My prefered tool for this Data cleaning challenge based on proficiency is Power 
 
 ## Data Cleaning Process
 
-![image](https://user-images.githubusercontent.com/97708113/228185857-9b664ac7-436b-4060-9713-21a7c206703f.png)
+<div>
+  <img src="![image](https://user-images.githubusercontent.com/97708113/228187564-1ca3c0f7-9f46-4ef1-951c-b0b7b856b1c0.png).png" alt="Image 1" width="400" height="300" />
+  <img src="![image](https://user-images.githubusercontent.com/97708113/228187669-06f73a7d-8a4a-4eaa-86ba-61cf9d25be43.png).png" alt="Image 2" width="400" height="300" />
+</div>
 
 To ensure data quality , the following approach was used after loading the data , whitespaces were removed by unticking the button from the viewtab
 
